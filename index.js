@@ -114,9 +114,9 @@ interactive(client);
 
 const sendBackCtx = function(data) {
 	return new Promise((resolve, reject) => {
-		console.log(" réponse : ",JSON.stringify(data));
+		//console.log(" réponse : ",JSON.stringify(data));
 		ctx.news_title = JSON.parse(data).response.results[0].webTitle;
-		console.log(" ctx : ",JSON.stringify(ctx));
+		//console.log(" ctx : ",JSON.stringify(ctx));
 		return resolve(ctx);
 	})
 }
