@@ -1,4 +1,4 @@
-//{% raw %}
+{% raw %}
 
 
 'use strict';
@@ -147,4 +147,4 @@ const getContent = function(url) {
 	})
 };
 
-//{% endraw %}
+{% endraw %}
