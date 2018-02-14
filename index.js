@@ -1,3 +1,6 @@
+//{% raw %}
+
+
 'use strict';
 
 let Wit = null;
@@ -59,13 +62,13 @@ let getNewsResults = function({context, entities}) {
 		var query  = firstEntityValue(entities, 'query');
 		var location = firstEntityValue(entities, 'location');
 		var datetime  = firstEntityValue(entities, 'datetime');
-      	
+
 		var guardianKey = "api-key=fd0993a0-9bde-4750-b8bd-4ce40e9e6a73";
 		var urlChunks = ["http://content.guardianapis.com/search?page-size=1"];
-		
+
 		//1if intent, updates context
 		if (intent) {context.intent = intent; }
-		
+
 		//2 if query, add this to request
 		var urlQuery = "q=";
 		if (query) {
@@ -79,30 +82,30 @@ let getNewsResults = function({context, entities}) {
 		}
 		//if url integrity == , add this to request
 		if (urlQuery) { urlChunks.push(urlQuery); }
-		
+
 		//4 if tags, add this to request
 		if (tags) {
 			var urlTags = "tags="+encodeURI(tags);
 			if (urlTags) { urlChunks.push(urlTags) }
 		}
-  
+
 		//3 if datetime, TBD
 		if (datetime) { }
-  
+
 		//make full url String
 		if (urlChunks.length > 1) {
 			urlChunks.push(guardianKey);
 			var urlStr = urlChunks.join("&");
 			console.log(urlStr);
-	  
-	  
+
+
 		}
 		console.log("context...", JSON.stringify(context));
 		resolve(urlStr)
 		//5 send request to guardian's API and look at the response
 		//if no result, set noResults
 		//if result, set newsTitle
-   
+
 	}).then(getContent).then(sendBackCtx);
 }
 const actions = {send, getNewsResults};
@@ -144,4 +147,4 @@ const getContent = function(url) {
 	})
 };
 
-
+//{% endraw %}
