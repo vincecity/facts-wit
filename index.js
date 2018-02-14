@@ -1,4 +1,4 @@
-{% raw %}
+
 
 
 'use strict';
@@ -146,5 +146,3 @@ const getContent = function(url) {
 		request.on('error', (err) => reject(err))
 	})
 };
-
-{% endraw %}
